@@ -1,5 +1,6 @@
 package com.liferay.commerce.demo.order.entry.type;
 
+import com.liferay.commerce.account.model.CommerceAccount;
 import com.liferay.commerce.model.CommerceOrder;
 import com.liferay.commerce.order.rule.entry.type.COREntryType;
 import com.liferay.commerce.order.rule.model.COREntry;
@@ -28,7 +29,13 @@ public class DemoCOREntryType implements COREntryType{
 
     @Override
     public boolean evaluate(COREntry corEntry, CommerceOrder commerceOrder) throws PortalException {
-        return false;
+        CommerceAccount commerceAccount = commerceOrder.getCommerceAccount();
+        boolean onHold = (boolean)commerceAccount.getExpandoBridge().getAttribute("on-hold");
+        if(onHold) {
+            return false;
+        }else{
+            return true;
+        }
     }
 
     @Override
