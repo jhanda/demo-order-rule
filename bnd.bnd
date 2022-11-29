@@ -1,0 +1,4 @@
+Bundle-Name: demo-order-rule
+Bundle-SymbolicName: com.liferay.commerce.demo.order.entry.type
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.commerce.demo.order.entry.type.api
